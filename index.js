@@ -1,46 +1,33 @@
-let notifications: string[] = [
+var notifications = [
     'general',
     'individual',
     'retiros',
     'boletin'
 ];
-
-let stateNotifications: string[] = [
+var stateNotifications = [
     'visto',
     'no-visto'
-
-]
-
-let stateHourNotifications: string[] = [
+];
+var stateHourNotifications = [
     '00:00:00',
     '01/01/01'
-]
-
-let mensaje: string[] = [
+];
+var mensaje = [
     'Escribe un mensaje'
-]
-
-let log = true;
-
+];
+var log = true;
 if (log = false) {
     console.log("Bienvenido");
-  } else {
+}
+else {
     console.log("Valida tu usuario");
-  }
-
-
-
-
+}
 //---------------------------------------------------------------------------------------
-const input = document.getElementById('my-input') as HTMLInputElement;
-const buttonSend = document.getElementById('buttonSend') as HTMLInputElement;
-
-buttonSend.addEventListener('click', () => {
-    const paragraph = document.createElement('p');
+var input = document.getElementById('my-input');
+var buttonSend = document.getElementById('buttonSend');
+buttonSend.addEventListener('click', function () {
+    var paragraph = document.createElement('p');
     paragraph.textContent = input.value;
     document.body.appendChild(paragraph);
 });
 //Escribir en el html
-
-
-
