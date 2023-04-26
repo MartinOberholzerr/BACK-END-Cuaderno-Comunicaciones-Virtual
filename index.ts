@@ -8,6 +8,7 @@ let notifications: string[] = [
 let stateNotifications: string[] = [
     'visto',
     'no-visto'
+<<<<<<< Updated upstream
 ]
 
 let stateHourNotifications: string[] = [
@@ -16,3 +17,6 @@ let stateHourNotifications: string[] = [
 ]
 
 console.log(notifications[2]);
+=======
+]
+>>>>>>> Stashed changes
