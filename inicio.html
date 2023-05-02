@@ -11,29 +11,39 @@
       <h1>Inicio</h1>
         <label>
           Username:
+          <br />
           <input type="text" name="username" />
         </label>
         <br />
         <label>
           Password:
+          <br />
           <input type="password" name="password" />
         </label>
+        <br />
         <br />
         <button type="submit">Submit</button>
       </form>
       <div id="result"></div>
   
-      <form>
-        <h1>Registrarse</h1>
-        <label for="dni">DNI:</label>
-        <input type="text" id="dni" name="dni"><br><br>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password"><br><br>
-        <label for="confirm-password">Confirmar contraseña:</label>
-        <input type="password" id="confirm-password" name="confirm-password"><br><br>
-        <input type="submit" value="Registrarse">
+
+      <h1>Registro</h1>
+      <form id="registroForm">
+        <label for="dni">DNI:</label><br>
+        <input type="text" id="dni" name="dni" maxlength="7" minlength="6" required><br>
+        
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password" minlength="8" required><br>
+        
+        <label for="confirmPassword">Confirmar contraseña:</label><br>
+        <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+        
+        <button type="submit" id="registroBtn">Registrarse</button><br>
+        
+        <p id="errorMensaje"></p><br>
       </form>
       
+
       <script src="src/Modelos/inicio.js"></script>
 </body>
 </html>

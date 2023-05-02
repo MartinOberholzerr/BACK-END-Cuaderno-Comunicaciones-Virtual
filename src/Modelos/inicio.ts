@@ -42,3 +42,37 @@ interface User {
     passwordInput.value = "";
   });
   
+
+//registro
+
+const registroForm = document.getElementById('registroForm') as HTMLFormElement;
+const errorMensaje = document.getElementById('errorMensaje') as HTMLParagraphElement;
+
+if (registroForm) {
+  registroForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const dniInput = document.getElementById('dni') as HTMLInputElement;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const confirmPasswordInput = document.getElementById('confirmPassword') as HTMLInputElement;
+
+    const dni = dniInput.value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (dni.length <7) {
+      errorMensaje.textContent = 'El DNI debe tener un mínimo de 7 caracteres';
+    } else if (!password.match(passwordRegex)) {
+      errorMensaje.textContent = 'La contraseña debe tener un mínimo de 8 caracteres, una mayúscula y un número';
+    } else if (password !== confirmPassword) {
+      errorMensaje.textContent = 'Las contraseñas no coinciden';
+    } else {
+      // Aquí puedes colocar el código para registrar al usuario
+      registroForm.reset();
+      errorMensaje.textContent = '';
+    }
+  });
+}
+
