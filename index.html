@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Form</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        .container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 50px 20px;
+}
+
+h2 {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-bottom: 10px;
+}
+
+input, textarea {
+	padding: 10px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+}
+
+textarea {
+	height: 200px;
+	resize: vertical;
+}
+
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 12px 24px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+
+#response {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+    </style>
+</head>
+<body>
+	<div class="container">
+		<h2>Contact Form</h2>
+		<form id="contact-form">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required>
+
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required>
+
+			<label for="message">Message:</label>
+			<textarea id="message" name="message" required></textarea>
+
+			<button type="submit" id="submit-btn">Send</button>
+		</form>
+		<div id="response"></div>
+	</div>
+
+
+    <script>
+        const form = document.querySelector('#contact-form');
+const response = document.querySelector('#response');
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const name = form.querySelector('#name').value;
+	const email = form.querySelector('#email').value;
+	const message = form.querySelector('#message').value;
+
+	const data = {
+		service_id: 'service_58bbcfo',
+		template_id: 'Transactional',
+		user_id: 'dMBdrXSIyiake29Zh',
+		template_params: {
+			'name': name,
+			'email': email,
+			'message': message
+		}
+	};
+
+	fetch('https://api.emailjs.com/api/v1.0/email/send', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(data)
+	})
+	.then((response) => {
+		response.text().then((text) => {
+			if (text === 'OK') {
+				response.innerHTML = 'Message sent successfully!';
+				form.reset();
+			} else {
+				response.innerHTML = 'An error occurred. Please try again later.';
+			}
+		});
+	})
+	.catch((error) => {
+		response.innerHTML = 'An error occurred. Please try again later.';
+	});
+});
+
+    </script>
+	<script src="script.js"></script>
+</body>
+</html>
